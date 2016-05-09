@@ -64,15 +64,8 @@ public class Mysql implements Bd {
 
         try {
             open();
-            st = con.createStatement();
 
-            sql = "delete from Persona;";
-            System.out.println(sql + "\n");
-            resultado = st.executeUpdate(sql);
-
-            sql = "delete from Departamento;";
-            System.out.println(sql + "\n");
-            resultado = st.executeUpdate(sql);
+            //TODO. Borrar el contenido de las tablas en mysql
 
             close();
 
@@ -88,26 +81,9 @@ public class Mysql implements Bd {
 
         try {
             open();
-            st = con.createStatement();
 
-            sql = "insert into Departamento (iddepartamento, nombre) "
-                + "values ('"
-                + persona.getDepartamento().getIddepartamento()
-                + "','" + persona.getDepartamento().getNombre()
-                + "');";
-            System.out.println(sql + "\n");
-            resultado = st.executeUpdate(sql);
+            //TODO. Insertar la persona en la BD
 
-            sql = "insert into Persona (idpersona, usuario, password, iddepartamento) "
-                + "values ('"
-                + persona.getIdpersona()
-                + "','" + persona.getUsuario()
-                + "','" + persona.getPassword()
-                + "','" + persona.getDepartamento().getIddepartamento()
-                + "');";
-
-            System.out.println(sql + "\n");
-            resultado = st.executeUpdate(sql);
             close();
 
         } catch (SQLException se) {

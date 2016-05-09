@@ -39,37 +39,7 @@ public class VistaPrincipal extends JFrame {
 
     public void initComponents() {
 
-        jl1 = new JLabel("Usuario");
-        jl2 = new JLabel("Contraseña");
-        jtf1 = new JTextField(10);
-        jtf1.setText("admin");
-        jpf1 = new JPasswordField(10);
-        jpf1.setText("123");
-        jb1 = new JButton();
-        jb2 = new JButton();
-        jl3 = new JLabel("");
-        jp1 = new JPanel(new FlowLayout());
-        int filas = 1;
-        int columnas = 2;
-        int espaciofilas = 10;
-        jp2 = new JPanel(new FlowLayout(filas, columnas, espaciofilas));
-        jp3 = new JPanel(new FlowLayout(filas, columnas, espaciofilas));
-
-        jp1.add(jl1);
-        jp1.add(jtf1);
-        jp1.add(jl2);
-        jp1.add(jpf1);
-
-        jp2.add(jb1);
-        jp2.add(jb2);
-
-        jp3.add(jl3);
-
-        this.setLayout(new FlowLayout());
-        add(jp1);
-        add(jp2);
-        add(jp3);
-
+        //TODO
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         this.setSize(400, 200);

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import modelo.Departamento;
 import modelo.Persona;
 import vistadatos.Bd;
@@ -44,58 +45,22 @@ class ControladorPrincipal implements ActionListener {
 
     public void inicializabotones() {
 
-        vista.getBt1().setActionCommand("Entrar");
-        vista.getBt1().addActionListener(this);
-        vista.getBt1().setText("Entrar");
-
-        vista.getBt2().setActionCommand("Salir");
-        vista.getBt2().addActionListener(this);
-        vista.getBt2().setText("Salir");
+        //TODO. Inicializa los botones asignando eventos.
 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-
-        String comando = ae.getActionCommand();
-
-        switch (comando) {
-            case "Entrar":
-                entrar();
-                break;
-            case "Salir":
-                salir();
-                break;
-            case "SalirVistaPersona":
-                ControladorPersona.SalirVistaPersona();
-                break;
-            case "GrabarVistaPersona":
-                ControladorPersona.GrabarVistaPersona();
-                break;
-        } // swith
+        //TODO. Si pulsamos boton entrar => entrar()
+        //Si pulsamos boton salir => salir()
+        // si SalirVistaPersona => ControladorPesona.SalirVistaPersona()
+        // si GrabarVistaPersona => ControladorPesona.GrabarVistaPersona()
 
     }
 
     public void entrar() {
-
-        String usuario = vista.getJtf1().getText();
-        String password = vista.getJtf2().getText();
-        Persona personabuscada = new Persona(null, usuario, password, null);
-        Persona persona;
-
-        persona = buscarPersona(personabuscada);
-
-        if (persona != null) {
-            ControladorPersona = new ControladorPersona(persona, vista, this);
-            ControladorPersona.visualizar();
-        } else { // No es correcto.
-            intentos++;
-            vista.getJl3().setText("Error: Usuario Incorrecto. Intento:" + intentos);
-        }
-
-        if (intentos >= 3) {
-            salir();
-        }
+        //TODO. Si la persona existe ver vista persona, sino mostrar mensaje de error.
+        //Número de intentos máximo 3.
 
     }
 
@@ -109,26 +74,16 @@ class ControladorPrincipal implements ActionListener {
 
     public void inicializaobjetos() {
 
-        Departamento d1 = new Departamento("d1", "Inf1");
-        Departamento d2 = new Departamento("d2", "Inf2");
-
-        Persona p1 = new Persona("p1", "admin", "123", d1);
-        Persona p2 = new Persona("p2", "paco", "123", d2);
-
-        personas.add(p1);
-        personas.add(p2);
+        //TODO Crear los siguientes objetos
+        //Departamento: id; d1, nombre: inf
+        //Persona: id:p1, Usuario: admin, password: 123, Departamento: d1
+        //Persona: id:p2, Usuario: paco, password: 123, Departamento: d1
 
     }
 
     public Persona buscarPersona(Persona personabuscada) {
 
-        Iterator it = personas.iterator();
-        while (it.hasNext()) {
-            Persona persona = (Persona) it.next();
-            if (personabuscada.getUsuario().equals(persona.getUsuario()) && personabuscada.getPassword().equals(persona.getPassword())) {
-                return persona;
-            }
-        }
+        //TODO Buscar la persona pasada por parámetro en el arrayList, devolver null si no la encuentra
         return null;
     }
 
@@ -136,11 +91,9 @@ class ControladorPrincipal implements ActionListener {
 
         Bd bd = new Db4o();
         bd.open();
-        Iterator it = personas.iterator();
-        while (it.hasNext()) {
-            Persona persona = (Persona) it.next();
-            bd.escribir(persona);
-        }
+
+        //TODO:  Recorre el arrayList y los graba en la base de datos utilizando el interface BD
+
         bd.close();
     }
 }
